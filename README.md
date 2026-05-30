@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SCOS
 
-## Getting Started
+Student Committee Operating System — a web platform for running committee operations: meetings, attendance, activity logs, planning, and report exports.
 
-First, run the development server:
+Built for multi-committee use with role-based access (member, secretary, chair).
+
+## Stack
+
+- [Next.js](https://nextjs.org/) 15 (App Router)
+- [Supabase](https://supabase.com/) (Auth, Postgres, Storage)
+- Tailwind CSS 4, [shadcn/ui](https://ui.shadcn.com/)
+- Vitest
+
+## Prerequisites
+
+- Node.js 20+
+- A Supabase project (Auth with Google provider recommended for member sign-in)
+
+## Setup
+
+```bash
+npm install
+cp .env.example .env.local
+```
+
+Fill in `.env.local` with your Supabase URL and keys, then apply migrations:
+
+```bash
+npx supabase link          # once, with your project ref
+npx supabase db push       # or: supabase migration up
+```
+
+Start the dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Auth & membership
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Configure Google OAuth in the Supabase dashboard and set redirect URLs to match `NEXT_PUBLIC_SITE_URL`. Committee chairs add member emails to the roster before first sign-in; others can submit a join request from the membership page.
 
-## Learn More
+## Scripts
 
-To learn more about Next.js, take a look at the following resources:
+| Command            | Description              |
+| ------------------ | ------------------------ |
+| `npm run dev`      | Development server       |
+| `npm run build`    | Production build         |
+| `npm run lint`     | ESLint                   |
+| `npm run typecheck`| TypeScript check         |
+| `npm run test`     | Vitest unit tests        |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project layout
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/app/(marketing)/   Public site (landing, about, legal)
+src/app/(app)/         Authenticated application
+src/actions/           Server actions
+src/lib/               Shared logic, Supabase clients, PDF/export
+supabase/migrations/   Database schema (apply in order)
+```
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Compatible with [Vercel](https://vercel.com/). Set the same environment variables as `.env.local` in the project settings. Run migrations against your production Supabase instance before promoting.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+Private repository. All rights reserved.
