@@ -4,9 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Hexagon, ArrowLeft, Shield, Users, FileText } from "lucide-react";
+import { BrandLogo } from "@/components/layout/brand-logo";
+import { ArrowLeft, Shield, Users, FileText } from "lucide-react";
 
- type LoginPageProps = {
+type LoginPageProps = {
   searchParams: Promise<{ message?: string }>;
 };
 
@@ -15,11 +16,10 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
   return (
     <div className="min-h-[calc(100vh-4rem)] bg-ink-50">
-      {/* Back to Home Link */}
-      <div className="absolute top-4 left-4 z-10 md:top-6 md:left-6">
+      <div className="absolute left-4 top-4 z-10 md:left-6 md:top-6">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm font-medium text-ink-500 transition-colors hover:text-clay-700"
+          className="inline-flex items-center gap-2 text-sm font-medium text-ink-500 transition-colors hover:text-brand-700"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to home
@@ -27,104 +27,82 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
       </div>
 
       <div className="grid min-h-[calc(100vh-4rem)] lg:grid-cols-2">
-        {/* Left Side - Brand Message */}
-        <div className="relative hidden lg:flex flex-col justify-between bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 p-12 text-white">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-clay-800/20 via-transparent to-transparent" />
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.03%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-50" />
+        <div className="gradient-hero pattern-diamond relative hidden flex-col justify-between p-12 text-white lg:flex">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-brand-500/15 via-transparent to-transparent" />
 
           <div className="relative">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-clay-600 to-clay-500 text-white shadow-lg">
-                <Hexagon className="h-6 w-6" strokeWidth={2.5} />
-              </div>
-              <div>
-                <p className="text-xs font-medium uppercase tracking-[0.15em] text-ink-400">
-                  International Open University
-                </p>
-                <p className="text-lg font-semibold tracking-tight">SCOS</p>
-              </div>
-            </Link>
+            <BrandLogo href="/" size="lg" tone="dark" />
           </div>
 
           <div className="relative max-w-lg">
             <h2 className="mb-4 text-3xl font-semibold leading-tight tracking-tight">
-              Governance excellence for Student Committees
+              Your committee workspace
             </h2>
-            <p className="mb-8 text-lg leading-relaxed text-ink-400">
-              Access your committee workspace, track activities, manage meetings, and generate
-              professional reports.
+            <p className="mb-8 text-lg leading-relaxed text-brand-100/90">
+              Sign in to manage meetings, log activities, and download reports for your roster.
             </p>
 
-            {/* Feature highlights */}
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-clay-400">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-brand-200">
                   <Users className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="font-medium">Committee Management</p>
-                  <p className="text-sm text-ink-500">Rosters, roles, and member analytics</p>
+                  <p className="font-medium">Roster access</p>
+                  <p className="text-sm text-brand-100/70">Roles for members, chairs, and secretaries</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-clay-400">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-brand-200">
                   <FileText className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="font-medium">Meeting Intelligence</p>
-                  <p className="text-sm text-ink-500">Minutes, attendance, and reminders</p>
+                  <p className="font-medium">Meetings and minutes</p>
+                  <p className="text-sm text-brand-100/70">Attendance, agendas, structured notes</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-clay-400">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-brand-200">
                   <Shield className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="font-medium">Secure & Private</p>
-                  <p className="text-sm text-ink-500">Enterprise-grade data protection</p>
+                  <p className="font-medium">Private by default</p>
+                  <p className="text-sm text-brand-100/70">Committee data scoped with row-level security</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="relative">
-            <p className="text-sm text-ink-500">
-              &copy; {new Date().getFullYear()} SCOS. All rights reserved.
-            </p>
-          </div>
+          <p className="relative text-sm text-brand-200/70">
+            &copy; {new Date().getFullYear()} SCOS
+          </p>
         </div>
 
-        {/* Right Side - Login Form */}
         <div className="flex items-center justify-center p-4 md:p-8">
-          <Card className="w-full max-w-md border-ink-200 shadow-xl shadow-ink-900/5">
+          <Card className="w-full max-w-md border-ink-200 shadow-xl shadow-brand-900/5">
             <CardHeader className="space-y-1 pb-6">
-              <div className="flex items-center justify-center mb-4 lg:hidden">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-clay-700 to-clay-600 text-white shadow-md">
-                  <Hexagon className="h-6 w-6" strokeWidth={2.5} />
-                </div>
+              <div className="mb-4 flex justify-center lg:hidden">
+                <BrandLogo href="/" size="md" showWordmark={false} />
               </div>
               <CardTitle className="text-center text-2xl font-semibold tracking-tight">
-                Sign in to SCOS
+                Sign in
               </CardTitle>
               <CardDescription className="text-center">
-                Continue with your Google account to access your committee workspace
+                Use the Google account on your committee roster
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
-              {/* Message Banner */}
               {message ? (
                 <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
                   {message}
                 </div>
               ) : null}
 
-              {/* Google Sign In */}
               <form action={signInWithGoogle}>
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-clay-700 text-white hover:bg-clay-800 shadow-md"
+                  className="w-full bg-brand-600 text-white shadow-md hover:bg-brand-700"
                 >
                   <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
                     <path
@@ -148,27 +126,24 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
                 </Button>
               </form>
 
-              {/* Info Box */}
-              <div className="rounded-lg border border-ink-200 bg-ink-50/50 px-4 py-3">
+              <div className="rounded-lg border border-brand-100 bg-brand-50/60 px-4 py-3">
                 <p className="text-sm text-ink-600">
-                  <span className="font-medium text-ink-900">Important:</span> Your Gmail must be
-                  on your committee&apos;s roster. Contact your chair or secretary if you need
-                  access.
+                  <span className="font-medium text-ink-900">Roster required.</span> If sign-in
+                  fails, ask your chair or secretary to confirm your Gmail is listed.
                 </p>
               </div>
 
-              {/* Alternative Login */}
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
                   <span className="w-full border-t border-ink-200" />
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-white px-2 text-ink-500">Or continue with</span>
+                  <span className="bg-white px-2 text-ink-500">Or</span>
                 </div>
               </div>
 
               <details className="group">
-                <summary className="flex cursor-pointer items-center justify-between text-sm font-medium text-ink-700 transition-colors hover:text-clay-700">
+                <summary className="flex cursor-pointer items-center justify-between text-sm font-medium text-ink-700 transition-colors hover:text-brand-700">
                   <span>Email and password</span>
                   <svg
                     className="h-4 w-4 transition-transform group-open:rotate-180"
@@ -195,7 +170,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
                       type="email"
                       placeholder="you@example.com"
                       required
-                      className="border-ink-300 focus-visible:ring-clay-600"
+                      className="border-ink-300 focus-visible:ring-brand-500"
                     />
                   </div>
                   <div className="space-y-2">
@@ -208,31 +183,27 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
                       type="password"
                       placeholder="••••••••"
                       required
-                      className="border-ink-300 focus-visible:ring-clay-600"
+                      className="border-ink-300 focus-visible:ring-brand-500"
                     />
                   </div>
                   <Button
                     type="submit"
                     variant="outline"
-                    className="w-full border-ink-300 text-ink-700 hover:bg-ink-50"
+                    className="w-full border-ink-300 text-ink-700 hover:bg-brand-50"
                   >
-                    Sign In
+                    Sign in
                   </Button>
                 </form>
               </details>
 
-              {/* Help Links */}
               <div className="flex items-center justify-center gap-4 text-sm">
-                <Link
-                  href="/help"
-                  className="text-ink-500 transition-colors hover:text-clay-700"
-                >
-                  Need help?
+                <Link href="/help" className="text-ink-500 transition-colors hover:text-brand-700">
+                  Help
                 </Link>
                 <span className="text-ink-300">|</span>
                 <Link
                   href="/membership"
-                  className="text-ink-500 transition-colors hover:text-clay-700"
+                  className="text-ink-500 transition-colors hover:text-brand-700"
                 >
                   Request access
                 </Link>

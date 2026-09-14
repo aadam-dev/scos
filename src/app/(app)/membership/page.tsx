@@ -51,13 +51,13 @@ export default async function MembershipPage({ searchParams }: MembershipPagePro
       <Card className="border-ink-200">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Users className="h-5 w-5 text-clay-600" />
+            <Users className="h-5 w-5 text-brand-600" />
             How access works
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex gap-3">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-clay-100 text-clay-700 text-sm font-bold">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-700 text-sm font-bold">
               1
             </div>
             <div>
@@ -69,7 +69,7 @@ export default async function MembershipPage({ searchParams }: MembershipPagePro
             </div>
           </div>
           <div className="flex gap-3">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-clay-100 text-clay-700 text-sm font-bold">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-700 text-sm font-bold">
               2
             </div>
             <div>
@@ -122,7 +122,7 @@ export default async function MembershipPage({ searchParams }: MembershipPagePro
               <div className="space-y-2">
                 <Label htmlFor="committeeId">Student Committee</Label>
                 <Select name="committeeId" required>
-                  <SelectTrigger className="border-ink-300 focus:ring-clay-600">
+                  <SelectTrigger className="border-ink-300 focus:ring-brand-600">
                     <SelectValue placeholder="Select a committee" />
                   </SelectTrigger>
                   <SelectContent>
@@ -143,12 +143,12 @@ export default async function MembershipPage({ searchParams }: MembershipPagePro
                   rows={4}
                   required
                   placeholder="I am an IOU student on the Accra SC. Chair [name] can confirm my membership."
-                  className="border-ink-300 focus-visible:ring-clay-600"
+                  className="border-ink-300 focus-visible:ring-brand-600"
                 />
               </div>
               <Button
                 type="submit"
-                className="w-full bg-clay-700 text-white hover:bg-clay-800"
+                className="w-full bg-brand-700 text-white hover:bg-brand-800"
               >
                 Submit Request
                 <ArrowRight className="ml-2 h-4 w-4" />

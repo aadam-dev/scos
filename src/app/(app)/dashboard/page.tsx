@@ -33,7 +33,7 @@ export default async function DashboardPage() {
   if (!profile) {
     return (
       <div className="flex min-h-[60vh] flex-col items-center justify-center text-center">
-        <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-clay-700 to-clay-600 text-white shadow-xl">
+        <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-700 to-brand-600 text-white shadow-xl">
           <Activity className="h-10 w-10" strokeWidth={1.5} />
         </div>
         <h1 className="heading-2 text-ink-900 mb-2">Welcome to SCOS</h1>
@@ -41,7 +41,7 @@ export default async function DashboardPage() {
           The Student Committee Operating System for IOU committees.
         </p>
         <Link href="/login">
-          <Button size="lg" className="bg-clay-700 text-white hover:bg-clay-800">
+          <Button size="lg" className="bg-brand-700 text-white hover:bg-brand-800">
             Sign In
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
@@ -76,7 +76,7 @@ export default async function DashboardPage() {
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-4">
           <Avatar className="h-12 w-12 border border-ink-200">
-            <AvatarFallback className="bg-gradient-to-br from-clay-700 to-clay-600 text-white font-semibold">
+            <AvatarFallback className="bg-gradient-to-br from-brand-700 to-brand-600 text-white font-semibold">
               {userInitials}
             </AvatarFallback>
           </Avatar>
@@ -89,7 +89,12 @@ export default async function DashboardPage() {
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
+          <Link href="/academy">
+            <Button variant="outline" className="border-ink-300">
+              Role academy
+            </Button>
+          </Link>
           <Badge
             variant="outline"
             className={`${
@@ -120,7 +125,7 @@ export default async function DashboardPage() {
                 </p>
                 <p className="mt-1 text-xs text-ink-500">Target: 10h</p>
               </div>
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-clay-100 text-clay-700">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-100 text-brand-700">
                 <Clock className="h-6 w-6" strokeWidth={1.5} />
               </div>
             </div>
@@ -170,7 +175,7 @@ export default async function DashboardPage() {
               <div className="mt-4">
                 <Link
                   href={`/meetings/${activeMeetings[0].id}`}
-                  className="text-xs font-medium text-clay-700 hover:underline flex items-center gap-1"
+                  className="text-xs font-medium text-brand-700 hover:underline flex items-center gap-1"
                 >
                   Join {activeMeetings[0].title}
                   <ChevronRight className="h-3 w-3" />
@@ -197,7 +202,7 @@ export default async function DashboardPage() {
             <div className="mt-4">
               <Link
                 href="/activities/new"
-                className="text-xs font-medium text-clay-700 hover:underline flex items-center gap-1"
+                className="text-xs font-medium text-brand-700 hover:underline flex items-center gap-1"
               >
                 Log new activity
                 <Plus className="h-3 w-3" />
@@ -212,36 +217,36 @@ export default async function DashboardPage() {
         <Link href="/activities/new">
           <Button
             variant="outline"
-            className="w-full justify-start border-ink-200 text-ink-700 hover:bg-ink-50 hover:text-clay-700"
+            className="w-full justify-start border-ink-200 text-ink-700 hover:bg-ink-50 hover:text-brand-700"
           >
-            <Plus className="mr-2 h-4 w-4 text-clay-600" />
+            <Plus className="mr-2 h-4 w-4 text-brand-600" />
             Log Activity
           </Button>
         </Link>
         <Link href="/meetings">
           <Button
             variant="outline"
-            className="w-full justify-start border-ink-200 text-ink-700 hover:bg-ink-50 hover:text-clay-700"
+            className="w-full justify-start border-ink-200 text-ink-700 hover:bg-ink-50 hover:text-brand-700"
           >
-            <Calendar className="mr-2 h-4 w-4 text-clay-600" />
+            <Calendar className="mr-2 h-4 w-4 text-brand-600" />
             View Meetings
           </Button>
         </Link>
         <Link href="/reports">
           <Button
             variant="outline"
-            className="w-full justify-start border-ink-200 text-ink-700 hover:bg-ink-50 hover:text-clay-700"
+            className="w-full justify-start border-ink-200 text-ink-700 hover:bg-ink-50 hover:text-brand-700"
           >
-            <FileText className="mr-2 h-4 w-4 text-clay-600" />
+            <FileText className="mr-2 h-4 w-4 text-brand-600" />
             Generate Report
           </Button>
         </Link>
         <Link href="/planning">
           <Button
             variant="outline"
-            className="w-full justify-start border-ink-200 text-ink-700 hover:bg-ink-50 hover:text-clay-700"
+            className="w-full justify-start border-ink-200 text-ink-700 hover:bg-ink-50 hover:text-brand-700"
           >
-            <Clock className="mr-2 h-4 w-4 text-clay-600" />
+            <Clock className="mr-2 h-4 w-4 text-brand-600" />
             Planning Board
           </Button>
         </Link>
@@ -258,7 +263,7 @@ export default async function DashboardPage() {
                 <CardDescription>Your latest logged activities</CardDescription>
               </div>
               <Link href="/activities">
-                <Button variant="ghost" size="sm" className="text-clay-700">
+                <Button variant="ghost" size="sm" className="text-brand-700">
                   View all
                   <ChevronRight className="ml-1 h-4 w-4" />
                 </Button>
@@ -282,7 +287,7 @@ export default async function DashboardPage() {
                     className="flex items-center justify-between rounded-lg border border-ink-200 p-3 hover:bg-ink-50/50 transition-colors"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-clay-100 text-clay-700">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-100 text-brand-700">
                         <Activity className="h-4 w-4" />
                       </div>
                       <div>
@@ -358,7 +363,7 @@ export default async function DashboardPage() {
                         {member.full_name}
                       </p>
                     </div>
-                    <p className="text-sm font-semibold text-clay-700">
+                    <p className="text-sm font-semibold text-brand-700">
                       {Number(member.total_hours).toFixed(1)}h
                     </p>
                   </div>

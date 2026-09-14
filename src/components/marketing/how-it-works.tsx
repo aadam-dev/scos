@@ -1,79 +1,56 @@
 "use client";
 
-import { Calendar, CheckCircle, FileCheck } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
-const steps = [
+const path = [
   {
-    number: "01",
-    icon: Calendar,
-    title: "Plan",
-    description:
-      "Set up meetings, create planning boards, and define campaign objectives. Invite members and establish agendas.",
+    title: "Member logs",
+    body: "You record the activity, minutes, and evidence inside SCOS.",
   },
   {
-    number: "02",
-    icon: CheckCircle,
-    title: "Execute",
-    description:
-      "Run meetings with structured minutes, log activities with evidence, and track attendance automatically.",
+    title: "Chair exports",
+    body: "Chair or secretary reviews claims and downloads the PDF or Excel logbook.",
   },
   {
-    number: "03",
-    icon: FileCheck,
-    title: "Report",
-    description:
-      "Generate clean reports for IOU review, export member logbooks, and maintain institutional records.",
+    title: "IOU reviews",
+    body: "Final community service approval happens with IOU outside this platform.",
   },
 ];
 
 export function HowItWorks() {
   return (
-    <section className="bg-ink-900 py-20 lg:py-28 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_var(--tw-gradient-stops))] from-clay-900/20 via-transparent to-transparent" />
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="mx-auto max-w-2xl text-center mb-16">
-          <p className="caption text-clay-400 mb-3">How It Works</p>
-          <h2 className="heading-2 text-white mb-4">
-            Simple, structured, effective
+    <section className="bg-paper px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <div className="mx-auto max-w-7xl">
+        <div className="max-w-2xl">
+          <h2 className="text-balance text-3xl font-semibold tracking-tight text-ink-950 md:text-4xl">
+            How hours reach IOU
           </h2>
-          <p className="body-large text-ink-400">
-            SCOS streamlines the entire committee lifecycle from planning through reporting.
+          <p className="mt-4 text-lg leading-relaxed text-ink-600">
+            SCOS is the local record. It does not replace IOU approval of service hours.
           </p>
         </div>
 
-        {/* Steps */}
-        <div className="grid gap-8 md:grid-cols-3">
-          {steps.map((step, index) => (
+        <div className="mt-14 grid gap-0 md:grid-cols-3">
+          {path.map((step, i) => (
             <div
-              key={step.number}
-              className="relative flex flex-col items-center text-center"
+              key={step.title}
+              className="border-t border-ink-200 py-8 md:border-l md:border-t-0 md:px-8 md:first:border-l-0 md:first:pl-0"
             >
-              {/* Connector Line */}
-              {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-12 left-[60%] w-[80%] h-px bg-gradient-to-r from-clay-700/50 to-transparent" />
-              )}
-
-              {/* Step Number & Icon */}
-              <div className="relative mb-6">
-                <div className="flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-clay-700 to-clay-800 text-white shadow-xl shadow-clay-900/50">
-                  <step.icon className="h-10 w-10" strokeWidth={1.5} />
-                </div>
-                <span className="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-ink-800 text-xs font-bold text-clay-400 border border-ink-700">
-                  {step.number}
-                </span>
-              </div>
-
-              {/* Content */}
-              <h3 className="heading-3 text-white mb-2">{step.title}</h3>
-              <p className="body-small text-ink-400 max-w-xs">
-                {step.description}
-              </p>
+              <p className="font-mono text-xs text-brand-700">{String(i + 1).padStart(2, "0")}</p>
+              <h3 className="mt-3 text-xl font-semibold text-ink-950">{step.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-ink-600">{step.body}</p>
             </div>
           ))}
         </div>
+
+        <Link
+          href="/journal/how-hours-work"
+          className="mt-10 inline-flex items-center text-sm font-medium text-brand-700 hover:text-brand-800"
+        >
+          Read the hours guide
+          <ArrowRight className="ml-2 h-4 w-4" />
+        </Link>
       </div>
     </section>
   );

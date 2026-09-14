@@ -15,9 +15,13 @@ import {
   Settings,
   Users,
   LogOut,
-  Hexagon,
   ChevronRight,
+  GraduationCap,
+  Archive,
+  Video,
+  Inbox,
 } from "lucide-react";
+import { BrandLogo } from "@/components/layout/brand-logo";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -32,7 +36,9 @@ const memberLinks = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/planning", label: "Planning", icon: Target },
   { href: "/meetings", label: "Meetings", icon: CalendarDays },
-  { href: "/activities", label: "Activities", icon: ClipboardList },
+  { href: "/activities", label: "Logbook", icon: ClipboardList },
+  { href: "/academy", label: "Academy", icon: GraduationCap },
+  { href: "/archive", label: "Archive", icon: Archive },
   { href: "/reports", label: "Reports", icon: FileBarChart },
 ];
 
@@ -40,6 +46,8 @@ const adminLinks = [
   { href: "/admin", label: "Admin", icon: Settings },
   { href: "/admin/planning", label: "Planning", icon: Target },
   { href: "/admin/activities", label: "SC Logs", icon: ClipboardList },
+  { href: "/admin/webinars", label: "Webinars", icon: Video },
+  { href: "/admin/intake", label: "Intake", icon: Inbox },
   { href: "/admin/members", label: "Members", icon: Users },
 ];
 
@@ -60,6 +68,10 @@ function getBreadcrumbs(pathname: string): { label: string; href?: string }[] {
         attendance: "Attendance",
         committee: "Settings",
         reports: "Reports",
+        intake: "Intake",
+        outreach: "Outreach",
+        webinars: "Webinars",
+        archive: "Archive",
       };
       crumbs.push({ label: sectionMap[segments[1]] || segments[1] });
     }
@@ -67,12 +79,14 @@ function getBreadcrumbs(pathname: string): { label: string; href?: string }[] {
     const sectionMap: Record<string, string> = {
       planning: "Planning",
       meetings: "Meetings",
-      activities: "Activities",
+      activities: "Logbook",
       reports: "Reports",
       notifications: "Notifications",
       membership: "Membership",
       onboarding: "Onboarding",
       orientation: "Orientation",
+      academy: "Academy",
+      archive: "Archive",
     };
     if (segments[0] && sectionMap[segments[0]]) {
       crumbs.push({ label: sectionMap[segments[0]] });
@@ -106,19 +120,7 @@ export function AppShell({ profile }: AppShellProps) {
       <header className="sticky top-0 z-50 w-full border-b border-ink-200 bg-white/95 backdrop-blur-xl">
         <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 md:px-6">
           {/* Logo */}
-          <Link href="/dashboard" className="flex items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-clay-700 to-clay-600 text-white shadow-sm">
-              <Hexagon className="h-5 w-5" strokeWidth={2.5} />
-            </div>
-            <div className="hidden flex-col sm:flex">
-              <span className="text-[10px] font-medium uppercase tracking-[0.15em] text-ink-500">
-                International Open University
-              </span>
-              <span className="text-sm font-semibold tracking-tight text-ink-900">
-                SCOS
-              </span>
-            </div>
-          </Link>
+          <BrandLogo href="/dashboard" size="md" />
 
           {/* Desktop Navigation */}
           <nav className="hidden items-center gap-1 md:flex">
@@ -131,13 +133,13 @@ export function AppShell({ profile }: AppShellProps) {
                   className={cn(
                     "relative px-3 py-2 text-sm font-medium transition-colors",
                     isActive
-                      ? "text-clay-700"
+                      ? "text-brand-700"
                       : "text-ink-600 hover:text-ink-900"
                   )}
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute bottom-0 left-1/2 h-0.5 w-6 -translate-x-1/2 rounded-full bg-clay-600" />
+                    <span className="absolute bottom-0 left-1/2 h-0.5 w-6 -translate-x-1/2 rounded-full bg-brand-600" />
                   )}
                 </Link>
               );
@@ -152,7 +154,7 @@ export function AppShell({ profile }: AppShellProps) {
                     className={cn(
                       "relative px-3 py-2 text-sm font-medium transition-colors",
                       isActive
-                        ? "text-clay-700"
+                        ? "text-brand-700"
                         : "text-ink-600 hover:text-ink-900"
                     )}
                   >
@@ -161,7 +163,7 @@ export function AppShell({ profile }: AppShellProps) {
                       {link.label}
                     </span>
                     {isActive && (
-                      <span className="absolute bottom-0 left-1/2 h-0.5 w-6 -translate-x-1/2 rounded-full bg-clay-600" />
+                      <span className="absolute bottom-0 left-1/2 h-0.5 w-6 -translate-x-1/2 rounded-full bg-brand-600" />
                     )}
                   </Link>
                 );
@@ -178,7 +180,7 @@ export function AppShell({ profile }: AppShellProps) {
                     className="relative h-9 w-9 rounded-full p-0"
                   >
                     <Avatar className="h-9 w-9 border border-ink-200">
-                      <AvatarFallback className="bg-gradient-to-br from-clay-100 to-clay-50 text-clay-700 text-sm font-medium">
+                      <AvatarFallback className="bg-gradient-to-br from-brand-100 to-brand-50 text-brand-700 text-sm font-medium">
                         {userInitials}
                       </AvatarFallback>
                     </Avatar>
@@ -187,7 +189,7 @@ export function AppShell({ profile }: AppShellProps) {
                 <DropdownMenuContent align="end" className="w-56">
                   <div className="flex items-center gap-2 p-2">
                     <Avatar className="h-8 w-8">
-                      <AvatarFallback className="bg-gradient-to-br from-clay-100 to-clay-50 text-clay-700 text-xs">
+                      <AvatarFallback className="bg-gradient-to-br from-brand-100 to-brand-50 text-brand-700 text-xs">
                         {userInitials}
                       </AvatarFallback>
                     </Avatar>
@@ -223,7 +225,7 @@ export function AppShell({ profile }: AppShellProps) {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="border-clay-300 text-clay-700 hover:bg-clay-50"
+                  className="border-brand-300 text-brand-700 hover:bg-brand-50"
                 >
                   Sign in
                 </Button>
@@ -244,7 +246,7 @@ export function AppShell({ profile }: AppShellProps) {
                   {crumb.href && index < breadcrumbs.length - 1 ? (
                     <Link
                       href={crumb.href}
-                      className="text-ink-500 transition-colors hover:text-clay-700"
+                      className="text-ink-500 transition-colors hover:text-brand-700"
                     >
                       {crumb.label}
                     </Link>
@@ -272,7 +274,7 @@ export function AppShell({ profile }: AppShellProps) {
                   className={cn(
                     "flex flex-col items-center px-3 py-2.5 transition-colors",
                     isActive
-                      ? "text-clay-700"
+                      ? "text-brand-700"
                       : "text-ink-500 hover:text-ink-700"
                   )}
                 >

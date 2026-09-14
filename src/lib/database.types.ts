@@ -806,6 +806,8 @@ export type Database = {
           joined_date: string
           location: string | null
           orientation_completed_at: string | null
+          academy_quiz_passed_at: string | null
+          academy_quiz_score: number | null
           phone: string | null
           preferred_positions: string[]
           program_type: string | null
@@ -824,6 +826,8 @@ export type Database = {
           joined_date: string
           location?: string | null
           orientation_completed_at?: string | null
+          academy_quiz_passed_at?: string | null
+          academy_quiz_score?: number | null
           phone?: string | null
           preferred_positions?: string[]
           program_type?: string | null
@@ -842,6 +846,8 @@ export type Database = {
           joined_date?: string
           location?: string | null
           orientation_completed_at?: string | null
+          academy_quiz_passed_at?: string | null
+          academy_quiz_score?: number | null
           phone?: string | null
           preferred_positions?: string[]
           program_type?: string | null
@@ -858,6 +864,255 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      internship_applications: {
+        Row: {
+          id: string
+          committee_id: string
+          full_name: string
+          email: string
+          phone: string | null
+          school_program: string | null
+          track: Database["public"]["Enums"]["internship_track"]
+          availability: string | null
+          motivation: string
+          status: Database["public"]["Enums"]["intake_status"]
+          admin_notes: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          committee_id?: string
+          full_name: string
+          email: string
+          phone?: string | null
+          school_program?: string | null
+          track?: Database["public"]["Enums"]["internship_track"]
+          availability?: string | null
+          motivation: string
+          status?: Database["public"]["Enums"]["intake_status"]
+          admin_notes?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          committee_id?: string
+          full_name?: string
+          email?: string
+          phone?: string | null
+          school_program?: string | null
+          track?: Database["public"]["Enums"]["internship_track"]
+          availability?: string | null
+          motivation?: string
+          status?: Database["public"]["Enums"]["intake_status"]
+          admin_notes?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      outreach_opportunities: {
+        Row: {
+          id: string
+          committee_id: string
+          title: string
+          summary: string
+          location: string | null
+          hours_estimate: number | null
+          starts_on: string | null
+          ends_on: string | null
+          published: boolean
+          created_by: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          committee_id: string
+          title: string
+          summary: string
+          location?: string | null
+          hours_estimate?: number | null
+          starts_on?: string | null
+          ends_on?: string | null
+          published?: boolean
+          created_by?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          committee_id?: string
+          title?: string
+          summary?: string
+          location?: string | null
+          hours_estimate?: number | null
+          starts_on?: string | null
+          ends_on?: string | null
+          published?: boolean
+          created_by?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      outreach_signups: {
+        Row: {
+          id: string
+          opportunity_id: string
+          committee_id: string
+          full_name: string
+          email: string
+          phone: string | null
+          note: string | null
+          status: Database["public"]["Enums"]["intake_status"]
+          admin_notes: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          opportunity_id: string
+          committee_id: string
+          full_name: string
+          email: string
+          phone?: string | null
+          note?: string | null
+          status?: Database["public"]["Enums"]["intake_status"]
+          admin_notes?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          opportunity_id?: string
+          committee_id?: string
+          full_name?: string
+          email?: string
+          phone?: string | null
+          note?: string | null
+          status?: Database["public"]["Enums"]["intake_status"]
+          admin_notes?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      committee_assets: {
+        Row: {
+          id: string
+          committee_id: string
+          title: string
+          description: string | null
+          category: Database["public"]["Enums"]["asset_category"]
+          year_term: string | null
+          tags: string[]
+          storage_path: string
+          mime_type: string | null
+          file_size: number | null
+          uploaded_by: string | null
+          archived: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          committee_id: string
+          title: string
+          description?: string | null
+          category?: Database["public"]["Enums"]["asset_category"]
+          year_term?: string | null
+          tags?: string[]
+          storage_path: string
+          mime_type?: string | null
+          file_size?: number | null
+          uploaded_by?: string | null
+          archived?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          committee_id?: string
+          title?: string
+          description?: string | null
+          category?: Database["public"]["Enums"]["asset_category"]
+          year_term?: string | null
+          tags?: string[]
+          storage_path?: string
+          mime_type?: string | null
+          file_size?: number | null
+          uploaded_by?: string | null
+          archived?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      sc_webinars: {
+        Row: {
+          id: string
+          committee_id: string
+          title: string
+          summary: string
+          host_label: string | null
+          starts_at: string
+          ends_at: string | null
+          timezone: string
+          format: string
+          join_url: string
+          registration_url: string | null
+          location: string | null
+          audience: string | null
+          contact_email: string | null
+          published: boolean
+          created_by: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          committee_id: string
+          title: string
+          summary: string
+          host_label?: string | null
+          starts_at: string
+          ends_at?: string | null
+          timezone?: string
+          format?: string
+          join_url: string
+          registration_url?: string | null
+          location?: string | null
+          audience?: string | null
+          contact_email?: string | null
+          published?: boolean
+          created_by?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          committee_id?: string
+          title?: string
+          summary?: string
+          host_label?: string | null
+          starts_at?: string
+          ends_at?: string | null
+          timezone?: string
+          format?: string
+          join_url?: string
+          registration_url?: string | null
+          location?: string | null
+          audience?: string | null
+          contact_email?: string | null
+          published?: boolean
+          created_by?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
       }
     }
     Views: {
@@ -919,6 +1174,15 @@ export type Database = {
         | "active"
         | "completed"
         | "archived"
+      intake_status: "new" | "contacted" | "accepted" | "declined"
+      internship_track: "local_internship" | "volunteer"
+      asset_category:
+        | "branding"
+        | "template"
+        | "project"
+        | "photo"
+        | "report"
+        | "other"
     }
     CompositeTypes: {
       [_ in never]: never

@@ -91,10 +91,10 @@ export default function HelpPage() {
     <div className="bg-white">
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-ink-200">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-clay-100/50 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-brand-100/50 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="caption text-clay-700 mb-4">Help Center</p>
+            <p className="caption text-brand-700 mb-4">Help Center</p>
             <h1 className="heading-1 text-ink-900 mb-6">
               How can we help?
             </h1>
@@ -112,10 +112,10 @@ export default function HelpPage() {
             {helpCategories.map((category) => (
               <Card
                 key={category.title}
-                className="border-ink-200 bg-ink-50/30 transition-all hover:border-clay-300"
+                className="border-ink-200 bg-ink-50/30 transition-all hover:border-brand-300"
               >
                 <CardHeader className="pb-3">
-                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-clay-100 to-clay-50 text-clay-700">
+                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-brand-100 to-brand-50 text-brand-700">
                     <category.icon className="h-5 w-5" strokeWidth={1.5} />
                   </div>
                   <h3 className="heading-4 text-ink-900">{category.title}</h3>
@@ -128,7 +128,7 @@ export default function HelpPage() {
                     {category.articles.map((article) => (
                       <li
                         key={article}
-                        className="text-sm text-ink-500 hover:text-clay-700 cursor-pointer transition-colors"
+                        className="text-sm text-ink-500 hover:text-brand-700 cursor-pointer transition-colors"
                       >
                         {article}
                       </li>
@@ -147,7 +147,7 @@ export default function HelpPage() {
           <div className="rounded-2xl bg-gradient-to-br from-ink-900 to-ink-800 p-8 md:p-12 text-center">
             <div className="mx-auto max-w-2xl">
               <div className="mb-4 flex justify-center">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-clay-700 text-white">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-700 text-white">
                   <MessageSquare className="h-6 w-6" strokeWidth={1.5} />
                 </div>
               </div>

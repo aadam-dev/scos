@@ -151,7 +151,7 @@ export default async function AdminMembersPage({ searchParams }: AdminMembersPag
           <Card className="border-ink-200">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <UserPlus className="h-5 w-5 text-clay-600" />
+                <UserPlus className="h-5 w-5 text-brand-600" />
                 Roster Invite
               </CardTitle>
               <CardDescription>
@@ -168,7 +168,7 @@ export default async function AdminMembersPage({ searchParams }: AdminMembersPag
                     type="email"
                     required
                     placeholder="member@gmail.com"
-                    className="border-ink-300 focus-visible:ring-clay-600"
+                    className="border-ink-300 focus-visible:ring-brand-600"
                   />
                 </div>
                 <div className="space-y-2">
@@ -177,13 +177,13 @@ export default async function AdminMembersPage({ searchParams }: AdminMembersPag
                     id="fullName"
                     name="fullName"
                     placeholder="Member name"
-                    className="border-ink-300 focus-visible:ring-clay-600"
+                    className="border-ink-300 focus-visible:ring-brand-600"
                   />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="suggestedRole">Role on join</Label>
                   <Select name="suggestedRole" defaultValue="member">
-                    <SelectTrigger className="border-ink-300 focus:ring-clay-600">
+                    <SelectTrigger className="border-ink-300 focus:ring-brand-600">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -199,13 +199,13 @@ export default async function AdminMembersPage({ searchParams }: AdminMembersPag
                     id="notes"
                     name="notes"
                     placeholder="Semester, outreach lead, etc."
-                    className="border-ink-300 focus-visible:ring-clay-600"
+                    className="border-ink-300 focus-visible:ring-brand-600"
                   />
                 </div>
                 <div className="md:col-span-2">
                   <Button
                     type="submit"
-                    className="bg-clay-700 text-white hover:bg-clay-800"
+                    className="bg-brand-700 text-white hover:bg-brand-800"
                   >
                     <UserPlus className="mr-2 h-4 w-4" />
                     Save roster invite
@@ -236,7 +236,7 @@ export default async function AdminMembersPage({ searchParams }: AdminMembersPag
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex items-center gap-3">
                         <Avatar className="h-10 w-10 border border-ink-200">
-                          <AvatarFallback className="bg-gradient-to-br from-clay-100 to-clay-50 text-clay-700 text-sm">
+                          <AvatarFallback className="bg-gradient-to-br from-brand-100 to-brand-50 text-brand-700 text-sm">
                             {request.full_name?.split(" ").map((n: string) => n[0]).join("").toUpperCase() || "U"}
                           </AvatarFallback>
                         </Avatar>
@@ -286,7 +286,7 @@ export default async function AdminMembersPage({ searchParams }: AdminMembersPag
           <Card className="border-ink-200">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Mail className="h-5 w-5 text-clay-600" />
+                <Mail className="h-5 w-5 text-brand-600" />
                 Roster ({roster.length})
               </CardTitle>
               <CardDescription>Invited emails and claim status</CardDescription>
@@ -334,7 +334,7 @@ export default async function AdminMembersPage({ searchParams }: AdminMembersPag
           <Card className="border-ink-200">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Users className="h-5 w-5 text-clay-600" />
+                <Users className="h-5 w-5 text-brand-600" />
                 Active Members
               </CardTitle>
             </CardHeader>

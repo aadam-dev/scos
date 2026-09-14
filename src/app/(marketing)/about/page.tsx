@@ -1,120 +1,103 @@
 import type { Metadata } from "next";
-import { Hexagon, Target, Shield, Globe } from "lucide-react";
+import Image from "next/image";
+import { Target, Shield, Layers } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { PlatformDisclaimer } from "@/components/layout/platform-disclaimer";
 
 export const metadata: Metadata = {
   title: "About SCOS | Student Committee Operating System",
   description:
-    "Learn about SCOS - the governance platform purpose-built for IOU Student Committees.",
+    "What SCOS is, where it started, and how student committees use it for meetings, logs, and reports.",
 };
 
 const values = [
   {
     icon: Target,
-    title: "Purpose-Built",
+    title: "Committee-first",
     description:
-      "Designed specifically for the unique needs of Student Committee operations, not a generic tool retrofitted.",
+      "Modules match real workflows: plan a campaign, run a meeting, log hours, export a PDF.",
   },
   {
     icon: Shield,
-    title: "Trust & Security",
+    title: "Access control",
     description:
-      "Built on Supabase with Row-Level Security. Your committee data stays private and protected.",
+      "Supabase row-level security keeps each committee's data separate. Roles decide who can approve or admin.",
   },
   {
-    icon: Globe,
-    title: "Global Scale",
+    icon: Layers,
+    title: "Structured records",
     description:
-      "Ready for Student Committees worldwide. From Ghana to wherever IOU reaches next.",
+      "Minutes, attendance, and activity entries stay in one place instead of scattered chats and sheets.",
   },
 ];
 
 export default function AboutPage() {
   return (
     <div className="bg-white">
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-ink-200">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-clay-100/50 via-transparent to-transparent" />
+      <section className="relative overflow-hidden border-b border-ink-200 pattern-diamond">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-brand-100/60 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="caption text-clay-700 mb-4">About SCOS</p>
-            <h1 className="heading-1 text-ink-900 mb-6">
-              Governance excellence for educational communities
-            </h1>
+            <p className="caption mb-4 text-brand-700">About</p>
+            <h1 className="heading-1 mb-6 text-ink-900">Software for student committees</h1>
             <p className="body-large text-ink-600">
-              SCOS (Student Committee Operating System) is a purpose-built platform for managing
-              IOU Student Committee operations. From meeting minutes to community service
-              tracking, we provide the infrastructure for effective governance.
+              SCOS (Student Committee Operating System) covers meetings, activity logs, planning,
+              and PDF exports. IT support built the first version for the Ghana Accra Student
+              Committee. It remains an independent project, not an official IOU product.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Mission */}
       <section className="py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-2 items-center">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
-              <p className="caption text-clay-700 mb-4">Our Mission</p>
-              <h2 className="heading-2 text-ink-900 mb-4">
-                Empowering student leadership through technology
-              </h2>
-              <div className="space-y-4 text-ink-600 leading-relaxed">
+              <p className="caption mb-4 text-brand-700">Why it exists</p>
+              <h2 className="heading-2 mb-4 text-ink-900">Less admin, clearer records</h2>
+              <div className="space-y-4 leading-relaxed text-ink-600">
                 <p>
-                  Student Committees are the backbone of local IOU engagement. They organize
-                  awareness campaigns, support students, and represent the university in their
-                  communities. Yet too often, committee operations rely on scattered spreadsheets,
-                  WhatsApp groups, and manual record-keeping.
+                  Committees coordinate events, support students, and keep logs for review periods.
+                  Most of that work still lives in WhatsApp threads and spreadsheets that are hard
+                  to search later.
                 </p>
                 <p>
-                  SCOS changes this. We provide a centralized, professional platform for
-                  committee governance — from planning meetings to generating official reports
-                  for IOU review.
-                </p>
-                <p>
-                  Our mission is simple: let committees focus on impact while we handle the
-                  operational complexity.
+                  SCOS puts planning, meetings, approvals, and exports in one workspace so chairs
+                  and secretaries spend less time chasing files.
                 </p>
               </div>
             </div>
-            <div className="rounded-2xl bg-gradient-to-br from-ink-900 to-ink-800 p-8 text-white">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-clay-700 text-white">
-                  <Hexagon className="h-6 w-6" strokeWidth={2.5} />
-                </div>
+            <div className="rounded-2xl bg-gradient-to-br from-brand-900 to-brand-700 p-8 text-white">
+              <div className="mb-6 flex items-center gap-4">
+                <Image src="/brand/iou-logo.png" alt="" width={48} height={48} />
                 <div>
                   <p className="font-semibold">SCOS</p>
-                  <p className="text-sm text-ink-400">Built for IOU</p>
+                  <p className="text-sm text-brand-100/80">Student committee operations</p>
                 </div>
               </div>
-              <blockquote className="text-lg font-medium leading-relaxed text-ink-100">
-                &ldquo;Technology should amplify human impact, not create administrative burden.&rdquo;
-              </blockquote>
+              <p className="text-lg font-medium leading-relaxed text-brand-50">
+                Built to match how committees actually work through a term, not how slide decks
+                describe them.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="border-t border-ink-200 bg-ink-50/50 py-16 lg:py-20">
+      <section className="border-t border-ink-200 bg-brand-50/40 py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="caption text-clay-700 mb-4">Our Values</p>
-            <h2 className="heading-2 text-ink-900">
-              Built on principles that matter
-            </h2>
+          <div className="mb-12 text-center">
+            <p className="caption mb-4 text-brand-700">Principles</p>
+            <h2 className="heading-2 text-ink-900">What we optimize for</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             {values.map((value) => (
-              <Card
-                key={value.title}
-                className="border-ink-200 bg-white"
-              >
+              <Card key={value.title} className="border-ink-200 bg-white">
                 <CardContent className="pt-6">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-clay-100 to-clay-50 text-clay-700">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
                     <value.icon className="h-6 w-6" strokeWidth={1.5} />
                   </div>
-                  <h3 className="heading-4 text-ink-900 mb-2">{value.title}</h3>
+                  <h3 className="heading-4 mb-2 text-ink-900">{value.title}</h3>
                   <p className="body-small text-ink-600">{value.description}</p>
                 </CardContent>
               </Card>
@@ -123,23 +106,19 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* IOU Context */}
       <section className="py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="caption text-clay-700 mb-4">IOU Ecosystem</p>
-            <h2 className="heading-2 text-ink-900 mb-4">
-              Part of something larger
+          <div className="mx-auto max-w-3xl">
+            <p className="caption mb-4 text-brand-700">Origin</p>
+            <h2 className="heading-2 mb-4 text-ink-900">
+              Started in Accra, open to other committees
             </h2>
-            <p className="body-large text-ink-600 mb-6">
-              SCOS serves the International Open University community, supporting Student
-              Committees that promote Islamic education, assist students, and organize community
-              engagement activities.
+            <p className="body-large mb-8 text-ink-600">
+              The Ghana Accra Student Committee needed a single place for minutes, service logs,
+              and semester exports. IT support built SCOS for that. Other committees may adopt it,
+              but the platform is community-maintained and separate from university administration.
             </p>
-            <p className="text-ink-600">
-              While deeply integrated with IOU processes, SCOS is designed to be globally
-              deployable — ready for Student Committees wherever they emerge.
-            </p>
+            <PlatformDisclaimer variant="full" />
           </div>
         </div>
       </section>

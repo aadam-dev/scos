@@ -16,6 +16,9 @@ export type Profile = {
   bio: string | null;
   orientation_completed_at?: string | null;
   membership_status?: "pending_review" | "active" | "suspended";
+  academy_quiz_passed_at?: string | null;
+  academy_quiz_score?: number | null;
+  target_hours?: number | null;
 };
 
 export type MemberSemesterStats = {

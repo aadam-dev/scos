@@ -8,20 +8,51 @@ import {
 } from "@react-pdf/renderer";
 
 const styles = StyleSheet.create({
-  page: { padding: 28, fontSize: 11, color: "#0f172a" },
-  header: { flexDirection: "row", justifyContent: "space-between", marginBottom: 16 },
-  h1: { fontSize: 16, fontWeight: 700 },
-  block: { marginBottom: 12 },
-  label: { fontSize: 10, color: "#334155" },
-  tableHeader: { flexDirection: "row", borderBottom: "1 solid #cbd5e1", paddingBottom: 4 },
-  row: { flexDirection: "row", borderBottom: "1 solid #e2e8f0", paddingVertical: 4 },
-  colDate: { width: "16%" },
-  colTitle: { width: "24%" },
-  colCat: { width: "16%" },
-  colLoc: { width: "20%" },
-  colType: { width: "12%" },
+  page: { padding: 32, fontSize: 10, color: "#12141a", fontFamily: "Helvetica" },
+  letterhead: {
+    borderBottom: "2 solid #1f6fd4",
+    paddingBottom: 12,
+    marginBottom: 16,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  org: { fontSize: 14, fontWeight: 700, color: "#0c2447" },
+  sub: { fontSize: 9, color: "#555d6e", marginTop: 2 },
+  h1: { fontSize: 13, fontWeight: 700, marginBottom: 4 },
+  block: { marginBottom: 14 },
+  label: { fontSize: 8, color: "#555d6e", textTransform: "uppercase", marginBottom: 2 },
+  note: {
+    marginTop: 8,
+    padding: 8,
+    backgroundColor: "#f3f9ff",
+    border: "1 solid #c2e0ff",
+    fontSize: 9,
+    color: "#184a8c",
+  },
+  tableHeader: {
+    flexDirection: "row",
+    borderBottom: "1 solid #1f6fd4",
+    paddingBottom: 4,
+    marginTop: 8,
+  },
+  row: { flexDirection: "row", borderBottom: "1 solid #ebe8e1", paddingVertical: 5 },
+  colDate: { width: "14%" },
+  colTitle: { width: "28%" },
+  colCat: { width: "14%" },
+  colLoc: { width: "18%" },
+  colType: { width: "14%" },
   colHours: { width: "12%", textAlign: "right" },
-  sigRow: { marginTop: 24, flexDirection: "row", justifyContent: "space-between" },
+  totalRow: {
+    marginTop: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    backgroundColor: "#12141a",
+    color: "#ffffff",
+    padding: 8,
+  },
+  sigRow: { marginTop: 28, flexDirection: "row", justifyContent: "space-between" },
+  sigBlock: { width: "45%" },
+  sigLine: { marginTop: 28, borderTop: "1 solid #b4bac6", paddingTop: 4 },
 });
 
 type ReportInput = {
@@ -47,32 +78,44 @@ type ReportInput = {
 };
 
 function ReportDoc(input: ReportInput) {
+  const runningTotal = input.activities.reduce((sum, a) => sum + a.hours, 0);
+
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-        <View style={styles.header}>
+        <View style={styles.letterhead}>
           <View>
-            <Text style={styles.h1}>International Open University</Text>
-            <Text>Community Service Report</Text>
-            <Text>Period: {input.reportPeriod}</Text>
+            <Text style={styles.org}>International Open University</Text>
+            <Text style={styles.sub}>Community Service Report · Student Committee logbook</Text>
+            <Text style={styles.sub}>Period: {input.reportPeriod}</Text>
           </View>
           <View>
-            <Text>{input.committeeName}</Text>
-            <Text>{input.committeeLocation}</Text>
+            <Text style={{ fontSize: 11, fontWeight: 700 }}>{input.committeeName}</Text>
+            <Text style={styles.sub}>{input.committeeLocation}</Text>
           </View>
         </View>
 
         <View style={styles.block}>
-          <Text style={styles.label}>Member</Text>
+          <Text style={styles.h1}>Member</Text>
           <Text>{input.memberName}</Text>
-          <Text>Role: {input.memberRole}</Text>
-          <Text>Joined: {input.joinedDate}</Text>
-          <Text>Attendance Rate: {input.attendanceRate.toFixed(2)}%</Text>
-          <Text>Total Claimed Hours: {input.totalHours.toFixed(2)}</Text>
-          <Text>Status: {input.memberStatus}</Text>
-          <Text>Review Note: Final approval is completed by IOU outside SCOS.</Text>
+          <Text style={styles.sub}>
+            Role: {input.memberRole} · Joined: {input.joinedDate}
+          </Text>
+          <Text style={styles.sub}>
+            Attendance: {input.attendanceRate.toFixed(1)}% · Status: {input.memberStatus}
+          </Text>
+          <Text style={styles.sub}>
+            Semester claimed hours (system): {input.totalHours.toFixed(2)}
+          </Text>
+          <View style={styles.note}>
+            <Text>
+              Review note: Final community service approval is completed by IOU outside SCOS. This
+              PDF is the local Student Committee submission record.
+            </Text>
+          </View>
         </View>
 
+        <Text style={styles.h1}>Claimed activities</Text>
         <View style={styles.tableHeader}>
           <Text style={styles.colDate}>Date</Text>
           <Text style={styles.colTitle}>Activity</Text>
@@ -83,7 +126,7 @@ function ReportDoc(input: ReportInput) {
         </View>
         {input.activities.length === 0 ? (
           <View style={styles.row}>
-            <Text>No approved activities were recorded for this reporting period.</Text>
+            <Text>No claimed activities were recorded for this reporting period.</Text>
           </View>
         ) : (
           input.activities.map((a, index) => (
@@ -98,16 +141,23 @@ function ReportDoc(input: ReportInput) {
           ))
         )}
 
+        <View style={styles.totalRow}>
+          <Text>Running total (this report)</Text>
+          <Text>{runningTotal.toFixed(2)} hours</Text>
+        </View>
+
         <View style={styles.sigRow}>
-          <View>
-            <Text>________________________</Text>
-            <Text>{input.chairName}</Text>
-            <Text>SC Chair</Text>
+          <View style={styles.sigBlock}>
+            <View style={styles.sigLine}>
+              <Text>{input.chairName}</Text>
+              <Text style={styles.sub}>SC Chair signature / date</Text>
+            </View>
           </View>
-          <View>
-            <Text>________________________</Text>
-            <Text>{input.secretaryName}</Text>
-            <Text>SC Secretary</Text>
+          <View style={styles.sigBlock}>
+            <View style={styles.sigLine}>
+              <Text>{input.secretaryName}</Text>
+              <Text style={styles.sub}>SC Secretary signature / date</Text>
+            </View>
           </View>
         </View>
       </Page>

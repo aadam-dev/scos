@@ -1,16 +1,20 @@
-const MAILTO =
-  "mailto:aadamsays@gmail.com?subject=SCOS%20enquiry&body=Hello%20Aadam%2C%0A%0AI%20have%20a%20question%20about%20SCOS.%0A%0A";
+import { PlatformDisclaimer } from "@/components/layout/platform-disclaimer";
+
+const AADAM_URL = "https://aadambuilds.dev";
 
 export function PoweredByAadam() {
   return (
     <footer className="border-t border-ink-200 bg-white py-4">
-      <div className="mx-auto flex w-full max-w-6xl justify-center px-4">
-        <p className="text-xs text-ink-500">
+      <div className="mx-auto w-full max-w-6xl space-y-3 px-4">
+        <PlatformDisclaimer className="text-center" />
+        <p className="text-center text-xs text-ink-500">
           powered by{" "}
           <a
-            href={MAILTO}
-            className="font-medium text-clay-700 underline decoration-clay-300 underline-offset-2 hover:text-clay-800 hover:decoration-clay-500 transition-colors"
-            aria-label="Contact aadam by email"
+            href={AADAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-brand-700 underline decoration-brand-300 underline-offset-2 transition-colors hover:text-brand-800 hover:decoration-brand-500"
+            aria-label="Visit aadam builds"
           >
             aadam
           </a>

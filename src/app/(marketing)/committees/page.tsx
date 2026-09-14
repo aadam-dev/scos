@@ -27,16 +27,16 @@ export default function CommitteesPage() {
     <div className="bg-white">
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-ink-200">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-clay-100/50 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-brand-100/50 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="caption text-clay-700 mb-4">Committees</p>
+            <p className="caption text-brand-700 mb-4">Committees</p>
             <h1 className="heading-1 text-ink-900 mb-6">
               Committees using SCOS
             </h1>
             <p className="body-large text-ink-600">
-              SCOS serves Student Committees across the International Open University network.
-              From Ghana to future locations worldwide.
+              SCOS started with the Ghana Accra Student Committee. Other committees can request
+              access through their chair or IT support.
             </p>
           </div>
         </div>
@@ -50,11 +50,11 @@ export default function CommitteesPage() {
               {committees.map((committee) => (
                 <Card
                   key={committee.name}
-                  className="group border-ink-200 bg-ink-50/30 transition-all hover:border-clay-300 hover:shadow-lg"
+                  className="group border-ink-200 bg-ink-50/30 transition-all hover:border-brand-300 hover:shadow-lg"
                 >
                   <CardHeader className="pb-4">
                     <div className="flex items-start justify-between">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-clay-700 to-clay-600 text-white">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-700 to-brand-600 text-white">
                         <span className="text-lg font-bold">
                           {committee.country}
                         </span>

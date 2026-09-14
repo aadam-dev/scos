@@ -7,33 +7,36 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Institutional Ink Scale - Sophisticated dark neutrals */
-  --ink-950: #030712;
-  --ink-900: #0f172a;
-  --ink-800: #1e293b;
-  --ink-700: #334155;
-  --ink-600: #475569;
-  --ink-500: #64748b;
-  --ink-400: #94a3b8;
-  --ink-300: #cbd5e1;
-  --ink-200: #e2e8f0;
-  --ink-100: #f1f5f9;
-  --ink-50: #f8fafc;
+  /* Warm paper + deep ink (Ghana SC public DNA) */
+  --ink-950: #12141a;
+  --ink-900: #1a1d26;
+  --ink-800: #2a2f3a;
+  --ink-700: #3d4452;
+  --ink-600: #555d6e;
+  --ink-500: #6b7385;
+  --ink-400: #8b93a3;
+  --ink-300: #b4bac6;
+  --ink-200: #d4d7de;
+  --ink-100: #ebe8e1;
+  --ink-50: #f4f1ea;
 
-  /* Warm Accent - Sophisticated clay/gold alternative to Islamic green */
-  --clay-950: #451a03;
-  --clay-900: #78350f;
-  --clay-800: #92400e;
-  --clay-700: #b45309;
-  --clay-600: #d97706;
-  --clay-500: #f59e0b;
-  --clay-400: #fbbf24;
-  --clay-300: #fcd34d;
-  --clay-200: #fde68a;
-  --clay-100: #fef3c7;
-  --clay-50: #fffbeb;
+  --paper: #f4f1ea;
+  --gold: #c9a227;
 
-  /* Semantic Colors */
+  /* IOU brand blues (logo-inspired) */
+  --brand-950: #061528;
+  --brand-900: #0c2447;
+  --brand-800: #123566;
+  --brand-700: #184a8c;
+  --brand-600: #1f6fd4;
+  --brand-500: #2b8cff;
+  --brand-400: #5aa8ff;
+  --brand-300: #8ec5ff;
+  --brand-200: #c2e0ff;
+  --brand-100: #e3f2ff;
+  --brand-50: #f3f9ff;
+
+  /* Semantic colors */
   --success-600: #059669;
   --success-500: #10b981;
   --success-100: #d1fae5;
@@ -49,54 +52,51 @@
   --error-100: #fee2e2;
   --error-50: #fef2f2;
 
-  --info-600: #2563eb;
-  --info-500: #3b82f6;
-  --info-100: #dbeafe;
-  --info-50: #eff6ff;
+  --info-600: var(--brand-700);
+  --info-500: var(--brand-600);
+  --info-100: var(--brand-100);
+  --info-50: var(--brand-50);
 
-  /* shadcn/ui semantic mappings - using clay as primary accent */
-  --background: var(--ink-50);
+  /* shadcn/ui */
+  --background: var(--paper);
   --foreground: var(--ink-950);
   --card: #ffffff;
   --card-foreground: var(--ink-950);
   --popover: #ffffff;
   --popover-foreground: var(--ink-950);
-  --primary: var(--clay-700);
+  --primary: var(--brand-600);
   --primary-foreground: #ffffff;
-  --secondary: var(--ink-100);
-  --secondary-foreground: var(--ink-900);
+  --secondary: var(--brand-50);
+  --secondary-foreground: var(--brand-900);
   --muted: var(--ink-100);
   --muted-foreground: var(--ink-600);
-  --accent: var(--clay-50);
-  --accent-foreground: var(--clay-900);
+  --accent: var(--brand-50);
+  --accent-foreground: var(--brand-900);
   --destructive: var(--error-600);
   --destructive-foreground: #ffffff;
   --border: var(--ink-200);
   --input: var(--ink-200);
-  --ring: var(--clay-600);
+  --ring: var(--brand-500);
   --radius: 0.625rem;
 
-  /* Chart colors */
-  --chart-1: var(--clay-600);
-  --chart-2: var(--ink-700);
+  --chart-1: var(--brand-600);
+  --chart-2: var(--brand-400);
   --chart-3: var(--success-600);
-  --chart-4: var(--info-600);
+  --chart-4: var(--ink-600);
   --chart-5: var(--error-600);
 
-  /* Sidebar */
-  --sidebar: var(--ink-50);
+  --sidebar: #ffffff;
   --sidebar-foreground: var(--ink-900);
-  --sidebar-primary: var(--clay-700);
+  --sidebar-primary: var(--brand-600);
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: var(--clay-50);
-  --sidebar-accent-foreground: var(--clay-900);
+  --sidebar-accent: var(--brand-50);
+  --sidebar-accent-foreground: var(--brand-900);
   --sidebar-border: var(--ink-200);
-  --sidebar-ring: var(--clay-600);
+  --sidebar-ring: var(--brand-500);
 
-  /* Legacy compatibility */
-  --primary-900: var(--ink-900);
-  --primary-700: var(--clay-700);
-  --primary-500: var(--clay-500);
+  --primary-900: var(--brand-900);
+  --primary-700: var(--brand-700);
+  --primary-500: var(--brand-500);
 }
 
 @theme inline {
@@ -141,11 +141,13 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
-  --font-heading: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
 
-  /* Custom color utilities */
+  --color-paper: var(--paper);
+  --color-gold: var(--gold);
+
   --color-ink-950: var(--ink-950);
   --color-ink-900: var(--ink-900);
   --color-ink-800: var(--ink-800);
@@ -158,20 +160,19 @@
   --color-ink-100: var(--ink-100);
   --color-ink-50: var(--ink-50);
 
-  --color-clay-950: var(--clay-950);
-  --color-clay-900: var(--clay-900);
-  --color-clay-800: var(--clay-800);
-  --color-clay-700: var(--clay-700);
-  --color-clay-600: var(--clay-600);
-  --color-clay-500: var(--clay-500);
-  --color-clay-400: var(--clay-400);
-  --color-clay-300: var(--clay-300);
-  --color-clay-200: var(--clay-200);
-  --color-clay-100: var(--clay-100);
-  --color-clay-50: var(--clay-50);
+  --color-brand-950: var(--brand-950);
+  --color-brand-900: var(--brand-900);
+  --color-brand-800: var(--brand-800);
+  --color-brand-700: var(--brand-700);
+  --color-brand-600: var(--brand-600);
+  --color-brand-500: var(--brand-500);
+  --color-brand-400: var(--brand-400);
+  --color-brand-300: var(--brand-300);
+  --color-brand-200: var(--brand-200);
+  --color-brand-100: var(--brand-100);
+  --color-brand-50: var(--brand-50);
 }
 
-/* Base styles */
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -187,17 +188,15 @@
     font-family: var(--font-sans);
   }
 
-  /* Focus styles */
   a:focus-visible,
   button:focus-visible,
   input:focus-visible,
   select:focus-visible,
   textarea:focus-visible {
-    @apply outline-none ring-2 ring-clay-600 ring-offset-2 ring-offset-background;
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-background;
   }
 }
 
-/* Typography utilities */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -235,27 +234,46 @@
     @apply text-xs font-medium uppercase tracking-wider text-muted-foreground;
   }
 
-  /* Gradient utilities */
   .gradient-hero {
-    background: linear-gradient(135deg, var(--ink-900) 0%, var(--ink-800) 50%, var(--ink-700) 100%);
+    background: linear-gradient(145deg, var(--brand-950) 0%, var(--brand-900) 45%, var(--brand-800) 100%);
   }
 
   .gradient-accent {
-    background: linear-gradient(135deg, var(--clay-700) 0%, var(--clay-600) 100%);
+    background: linear-gradient(135deg, var(--brand-700) 0%, var(--brand-500) 100%);
   }
 
   .gradient-card {
-    background: linear-gradient(180deg, #ffffff 0%, var(--ink-50) 100%);
+    background: linear-gradient(180deg, #ffffff 0%, var(--brand-50) 100%);
   }
 
   .gradient-glass {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.95) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(243, 249, 255, 0.96) 100%);
     backdrop-filter: blur(12px);
   }
 
-  /* Shadow utilities */
+  .pattern-diamond {
+    background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%231f6fd4' stroke-opacity='0.08' stroke-width='1'%3E%3Cpath d='M24 4 L44 24 L24 44 L4 24 Z'/%3E%3Cpath d='M24 12 L36 24 L24 36 L12 24 Z'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 48px 48px;
+  }
+
+  .kente-divider {
+    height: 8px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--brand-700) 0 12px,
+      var(--gold) 12px 18px,
+      var(--ink-950) 18px 24px,
+      var(--brand-500) 24px 36px,
+      transparent 36px 44px
+    );
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
   .shadow-glow {
-    box-shadow: 0 0 20px rgba(180, 83, 9, 0.15);
+    box-shadow: 0 0 24px rgba(31, 111, 212, 0.18);
   }
 
   .shadow-elevation-1 {
@@ -274,7 +292,6 @@
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   }
 
-  /* Animation utilities */
   .animate-in {
     animation: animateIn 0.3s ease-out;
   }
@@ -306,13 +323,11 @@
   }
 }
 
-/* Selection */
 ::selection {
-  background: var(--clay-200);
-  color: var(--clay-950);
+  background: var(--brand-200);
+  color: var(--brand-950);
 }
 
-/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -323,15 +338,14 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--ink-400);
+  background: var(--brand-300);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--ink-500);
+  background: var(--brand-400);
 }
 
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

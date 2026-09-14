@@ -13,6 +13,9 @@ import {
   Settings,
   ChevronRight,
   AlertTriangle,
+  Video,
+  Inbox,
+  Archive,
 } from "lucide-react";
 
 const adminLinks = [
@@ -27,6 +30,30 @@ const adminLinks = [
     label: "General SC Logs",
     description: "Review team records and IOU submission status",
     icon: ClipboardList,
+  },
+  {
+    href: "/admin/webinars",
+    label: "Webinars",
+    description: "Publish upcoming webinars and events with join links",
+    icon: Video,
+  },
+  {
+    href: "/admin/intake",
+    label: "Intake inbox",
+    description: "Internship interest and outreach signups",
+    icon: Inbox,
+  },
+  {
+    href: "/admin/outreach",
+    label: "Outreach listings",
+    description: "Publish Accra SC outreach opportunities",
+    icon: ClipboardList,
+  },
+  {
+    href: "/admin/archive",
+    label: "Asset archive",
+    description: "Upload legacy files for the next SC generation",
+    icon: Archive,
   },
   {
     href: "/admin/meetings",
@@ -75,7 +102,7 @@ export default async function AdminPage() {
       <div>
         <div className="flex items-center gap-2 mb-2">
           <h1 className="heading-3 text-ink-900">Admin Workspace</h1>
-          <Badge variant="outline" className="bg-clay-50 text-clay-800 border-clay-200">
+          <Badge variant="outline" className="bg-brand-50 text-brand-800 border-brand-200">
             Chair/Secretary
           </Badge>
         </div>
@@ -115,13 +142,13 @@ export default async function AdminPage() {
           const Icon = link.icon;
           return (
             <Link key={link.href} href={link.href}>
-              <Card className="h-full border-ink-200 hover:border-clay-300 transition-all hover:shadow-md group">
+              <Card className="h-full border-ink-200 hover:border-brand-300 transition-all hover:shadow-md group">
                 <CardHeader className="pb-3">
                   <div className="flex items-start justify-between">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-clay-100 text-clay-700 group-hover:bg-clay-700 group-hover:text-white transition-colors">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-700 group-hover:bg-brand-700 group-hover:text-white transition-colors">
                       <Icon className="h-5 w-5" strokeWidth={1.5} />
                     </div>
-                    <ChevronRight className="h-5 w-5 text-ink-400 group-hover:text-clay-700 transition-colors" />
+                    <ChevronRight className="h-5 w-5 text-ink-400 group-hover:text-brand-700 transition-colors" />
                   </div>
                   <CardTitle className="text-lg mt-3">{link.label}</CardTitle>
                   <CardDescription>{link.description}</CardDescription>

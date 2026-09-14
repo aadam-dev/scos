@@ -1,79 +1,61 @@
 "use client";
 
-import {
-  CalendarDays,
-  ClipboardList,
-  Target,
-  FileBarChart,
-  Users,
-  Shield,
-} from "lucide-react";
-import { FeatureCard } from "./feature-card";
-
-const features = [
-  {
-    icon: CalendarDays,
-    title: "Meeting Intelligence",
-    description:
-      "Schedule, track attendance, and generate structured minutes. Automated reminders ensure nothing falls through the cracks.",
-  },
-  {
-    icon: ClipboardList,
-    title: "Activity Tracking",
-    description:
-      "Log community service activities with evidence. Track hours toward degree requirements with transparent approval workflows.",
-  },
-  {
-    icon: Target,
-    title: "Strategic Planning",
-    description:
-      "Plan campaigns, track progress, and sync action items across meetings. Visual planning boards keep committees aligned.",
-  },
-  {
-    icon: FileBarChart,
-    title: "Report Generation",
-    description:
-      "Generate professional community service reports and committee logbooks. Export clean PDFs ready for IOU review.",
-  },
-  {
-    icon: Users,
-    title: "Member Analytics",
-    description:
-      "Monitor participation, track attendance rates, and identify engagement patterns. Data-driven insights for better governance.",
-  },
-  {
-    icon: Shield,
-    title: "IOU Integration",
-    description:
-      "Built specifically for the International Open University ecosystem. Google authentication, roster management, and secure access.",
-  },
-];
+import Link from "next/link";
+import { roles } from "@/content/academy/roles";
 
 export function FeatureGrid() {
+  const preview = roles.slice(0, 4);
+
   return (
-    <section className="bg-white py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="mx-auto max-w-2xl text-center mb-16">
-          <p className="caption text-clay-700 mb-3">Platform Capabilities</p>
-          <h2 className="heading-2 text-ink-900 mb-4">
-            Everything committees need to excel
-          </h2>
-          <p className="body-large text-ink-600">
-            From planning to reporting, SCOS provides the tools for effective
-            governance and community impact.
-          </p>
+    <section className="bg-white px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <div className="mx-auto max-w-7xl">
+        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div className="max-w-xl">
+            <h2 className="text-balance text-3xl font-semibold tracking-tight text-ink-950 md:text-4xl">
+              Eight positions. One Accra SC.
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-ink-600">
+              Learn what each role owns before you join. Members go deeper in the academy with a
+              short quiz.
+            </p>
+          </div>
+          <Link
+            href="/roles"
+            className="text-sm font-medium text-brand-700 hover:text-brand-800"
+          >
+            See all roles
+          </Link>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature) => (
-            <FeatureCard
-              key={feature.title}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-            />
+        <div className="mt-12 grid gap-4 md:grid-cols-2">
+          {preview.map((role, i) => (
+            <article
+              key={role.slug}
+              className={`rounded-2xl border border-ink-200 p-6 ${
+                i === 0 ? "bg-ink-950 text-white md:row-span-2 md:flex md:flex-col md:justify-between" : "bg-paper"
+              }`}
+            >
+              <div>
+                <p
+                  className={`font-mono text-xs uppercase tracking-[0.16em] ${
+                    i === 0 ? "text-brand-300" : "text-brand-700"
+                  }`}
+                >
+                  {role.shortTitle}
+                </p>
+                <h3
+                  className={`mt-3 text-xl font-semibold ${i === 0 ? "text-white" : "text-ink-950"}`}
+                >
+                  {role.title}
+                </h3>
+                <p className={`mt-3 text-sm leading-relaxed ${i === 0 ? "text-ink-300" : "text-ink-600"}`}>
+                  {role.purpose}
+                </p>
+              </div>
+              {i === 0 ? (
+                <p className="mt-8 font-mono text-xs text-ink-400">Primary leadership seat</p>
+              ) : null}
+            </article>
           ))}
         </div>
       </div>

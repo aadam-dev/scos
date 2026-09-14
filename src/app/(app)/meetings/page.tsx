@@ -48,7 +48,7 @@ export default async function MeetingsPage() {
           </p>
         </div>
         <Link href="/meetings/live">
-          <Button className="bg-clay-700 text-white hover:bg-clay-800">
+          <Button className="bg-brand-700 text-white hover:bg-brand-800">
             <Radio className="mr-2 h-4 w-4" />
             Join Active Session
           </Button>
@@ -59,8 +59,8 @@ export default async function MeetingsPage() {
       {meetings.length === 0 ? (
         <Card className="border-ink-200">
           <CardContent className="py-12 text-center">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-clay-100 mb-4">
-              <CalendarDays className="h-8 w-8 text-clay-600" />
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-100 mb-4">
+              <CalendarDays className="h-8 w-8 text-brand-600" />
             </div>
             <h3 className="text-lg font-semibold text-ink-900 mb-2">No meetings yet</h3>
             <p className="text-sm text-ink-600 max-w-sm mx-auto">
@@ -73,7 +73,7 @@ export default async function MeetingsPage() {
           {meetings.map((meeting) => (
             <Card
               key={meeting.id}
-              className="border-ink-200 hover:border-clay-300 transition-colors"
+              className="border-ink-200 hover:border-brand-300 transition-colors"
             >
               <CardHeader className="pb-3">
                 <div className="flex items-start justify-between gap-4">
@@ -103,7 +103,7 @@ export default async function MeetingsPage() {
                       : "Meeting scheduled - awaiting opening"}
                   </p>
                   <Link href={`/meetings/${meeting.id}`}>
-                    <Button variant="ghost" size="sm" className="text-clay-700 hover:text-clay-800 hover:bg-clay-50">
+                    <Button variant="ghost" size="sm" className="text-brand-700 hover:text-brand-800 hover:bg-brand-50">
                       View details
                       <ChevronRight className="ml-1 h-4 w-4" />
                     </Button>

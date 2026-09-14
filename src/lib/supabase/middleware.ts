@@ -1,8 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const PUBLIC_PATHS = [
-  "/",
+const PUBLIC_PREFIXES = [
   "/login",
   "/auth/callback",
   "/about",
@@ -12,6 +11,11 @@ const PUBLIC_PATHS = [
   "/help",
   "/privacy",
   "/terms",
+  "/roles",
+  "/journal",
+  "/outreach",
+  "/internships",
+  "/webinars",
 ];
 const MEMBERSHIP_PATHS = ["/membership"];
 const ONBOARDING_PATHS = ["/orientation", "/onboarding"];
@@ -21,6 +25,13 @@ function isActiveMember(profile: {
   committee_id?: string | null;
 }) {
   return profile.membership_status === "active" && Boolean(profile.committee_id);
+}
+
+function isPublicPath(pathname: string) {
+  if (pathname === "/") return true;
+  return PUBLIC_PREFIXES.some(
+    (path) => pathname === path || pathname.startsWith(`${path}/`),
+  );
 }
 
 export async function updateSession(request: NextRequest) {
@@ -52,7 +63,7 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const pathname = request.nextUrl.pathname;
-  const isPublicPath = PUBLIC_PATHS.some((path) => pathname.startsWith(path));
+  const publicPath = isPublicPath(pathname);
   const isMembershipPath = MEMBERSHIP_PATHS.some((path) => pathname.startsWith(path));
   const isOnboardingPath = ONBOARDING_PATHS.some((path) => pathname.startsWith(path));
   const isAsset =
@@ -61,7 +72,7 @@ export async function updateSession(request: NextRequest) {
     pathname.includes(".");
   const isApiRoute = pathname.startsWith("/api/");
 
-  if (!user && !isPublicPath && !isAsset) {
+  if (!user && !publicPath && !isAsset) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
     url.searchParams.set("redirectedFrom", pathname);
@@ -96,7 +107,7 @@ export async function updateSession(request: NextRequest) {
       .single();
 
     if (!profile || !isActiveMember(profile)) {
-      if (!isPublicPath && !isMembershipPath) {
+      if (!publicPath && !isMembershipPath) {
         const url = request.nextUrl.clone();
         url.pathname = "/membership";
         return NextResponse.redirect(url);

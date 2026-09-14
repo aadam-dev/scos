@@ -10,7 +10,7 @@ export function Progress({ value, className }: ProgressProps) {
   return (
     <div className={cn("h-2 w-full rounded-full bg-ink-200", className)}>
       <div
-        className="h-2 rounded-full bg-clay-600 transition-all"
+        className="h-2 rounded-full bg-brand-600 transition-all"
         style={{ width: `${clamped}%` }}
         role="progressbar"
         aria-valuemin={0}

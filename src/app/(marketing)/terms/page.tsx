@@ -10,7 +10,7 @@ export default function TermsPage() {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
-        <p className="caption text-clay-700 mb-4">Legal</p>
+        <p className="caption text-brand-700 mb-4">Legal</p>
         <h1 className="heading-1 text-ink-900 mb-8">Terms of Service</h1>
 
         <div className="prose prose-ink max-w-none">
@@ -28,11 +28,16 @@ export default function TermsPage() {
 
           <section className="mb-8">
             <h2 className="heading-3 text-ink-900 mb-3">2. Description of Service</h2>
+            <p className="text-ink-600 leading-relaxed mb-4">
+              SCOS is a Student Committee Operating System designed to help student committees
+              manage meetings, track activities, and generate reports. The Platform is provided
+              as-is and may be updated or modified at any time.
+            </p>
             <p className="text-ink-600 leading-relaxed">
-              SCOS is a Student Committee Operating System designed to help International Open
-              University (IOU) Student Committees manage meetings, track activities, and
-              generate reports. The Platform is provided as-is and may be updated or modified
-              at any time.
+              SCOS is an independent project and is not affiliated with, endorsed by, or
+              operated by International Open University (IOU). It was initially developed by IT
+              support for the Ghana Accra Student Committee. Use of the Platform does not imply
+              IOU approval of committee operations or recorded service hours.
             </p>
           </section>
 
@@ -115,7 +120,7 @@ export default function TermsPage() {
               For questions about these Terms, please contact us at:{" "}
               <a
                 href="mailto:aadamsays@gmail.com"
-                className="text-clay-700 hover:underline"
+                className="text-brand-700 hover:underline"
               >
                 aadamsays@gmail.com
               </a>

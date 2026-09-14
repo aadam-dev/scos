@@ -10,7 +10,7 @@ export default function PrivacyPage() {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
-        <p className="caption text-clay-700 mb-4">Legal</p>
+        <p className="caption text-brand-700 mb-4">Legal</p>
         <h1 className="heading-1 text-ink-900 mb-8">Privacy Policy</h1>
 
         <div className="prose prose-ink max-w-none">
@@ -101,7 +101,7 @@ export default function PrivacyPage() {
               If you have questions about this Privacy Policy, please contact us at:{" "}
               <a
                 href="mailto:aadamsays@gmail.com"
-                className="text-clay-700 hover:underline"
+                className="text-brand-700 hover:underline"
               >
                 aadamsays@gmail.com
               </a>

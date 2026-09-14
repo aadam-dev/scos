@@ -29,8 +29,8 @@ export default async function PlanningPage() {
       {items.length === 0 ? (
         <Card className="border-ink-200">
           <CardContent className="py-12 text-center">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-clay-100 mb-4">
-              <Target className="h-8 w-8 text-clay-600" />
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-100 mb-4">
+              <Target className="h-8 w-8 text-brand-600" />
             </div>
             <h3 className="text-lg font-semibold text-ink-900 mb-2">No planned work yet</h3>
             <p className="text-sm text-ink-600 max-w-sm mx-auto">
@@ -43,7 +43,7 @@ export default async function PlanningPage() {
           {items.map((item) => (
             <Card
               key={item.id}
-              className="border-ink-200 hover:border-clay-300 transition-colors"
+              className="border-ink-200 hover:border-brand-300 transition-colors"
             >
               <CardHeader className="pb-3">
                 <div className="flex items-start justify-between gap-3">
@@ -57,7 +57,7 @@ export default async function PlanningPage() {
                         {item.status.replace("-", " ")}
                       </Badge>
                       {item.synced_from_minutes_at && (
-                        <Badge variant="outline" className="bg-clay-50 text-clay-800 border-clay-200">
+                        <Badge variant="outline" className="bg-brand-50 text-brand-800 border-brand-200">
                           <FileText className="mr-1 h-3 w-3" />
                           From minutes
                         </Badge>
@@ -87,7 +87,7 @@ export default async function PlanningPage() {
                 {item.source_meeting_id && (
                   <div className="mt-4 pt-4 border-t border-ink-200">
                     <Link href={`/meetings/${item.source_meeting_id}`}>
-                      <Button variant="ghost" size="sm" className="text-clay-700 hover:text-clay-800 hover:bg-clay-50 -ml-2">
+                      <Button variant="ghost" size="sm" className="text-brand-700 hover:text-brand-800 hover:bg-brand-50 -ml-2">
                         View source meeting
                         <ChevronRight className="ml-1 h-4 w-4" />
                       </Button>

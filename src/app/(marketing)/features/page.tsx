@@ -152,16 +152,15 @@ export default function FeaturesPage() {
     <div className="bg-white">
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-ink-200">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-clay-100/50 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-brand-100/50 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="caption text-clay-700 mb-4">Platform Features</p>
+            <p className="caption text-brand-700 mb-4">Platform Features</p>
             <h1 className="heading-1 text-ink-900 mb-6">
-              Everything committees need to excel
+              Features for committee work
             </h1>
             <p className="body-large text-ink-600">
-              SCOS provides a complete toolkit for Student Committee governance — from
-              planning to reporting, all in one integrated platform.
+              Planning, meetings, activity logs, roster access, and PDF exports in one app.
             </p>
           </div>
         </div>
@@ -174,7 +173,7 @@ export default function FeaturesPage() {
             {featureCategories.map((category, categoryIndex) => (
               <div key={category.title}>
                 <div className="mb-8">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-clay-700 to-clay-600 text-white">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-700 to-brand-600 text-white">
                     <category.icon className="h-6 w-6" strokeWidth={1.5} />
                   </div>
                   <h2 className="heading-2 text-ink-900 mb-2">{category.title}</h2>
@@ -184,10 +183,10 @@ export default function FeaturesPage() {
                   {category.features.map((feature) => (
                     <Card
                       key={feature.title}
-                      className="border-ink-200 bg-ink-50/30 transition-all hover:border-clay-300"
+                      className="border-ink-200 bg-ink-50/30 transition-all hover:border-brand-300"
                     >
                       <CardHeader className="pb-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white text-clay-700 shadow-sm">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white text-brand-700 shadow-sm">
                           <feature.icon className="h-5 w-5" strokeWidth={1.5} />
                         </div>
                       </CardHeader>
